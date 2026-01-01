@@ -7,7 +7,7 @@ It is designed to remove friction when starting a new Python project by
 enforcing a simple, predictable convention.
 
 By default, the virtual environment name is the same as the current
-working directory, but this can be overridden via a command-line option (``--name```).
+working directory, but this can be overridden via a command-line option (``--name``).
 
 ## What this does
 
