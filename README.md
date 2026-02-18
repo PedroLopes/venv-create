@@ -9,12 +9,15 @@ enforcing a simple, predictable convention.
 By default, the virtual environment name is the same as the current
 working directory, but this can be overridden via a command-line option (``--name``).
 
+Also if the environment already exists, it will activate it without overwriting it.
+
 ## What this does
 
 -   Automatically names the virtual environment after the current
     directory
 -   Uses Python's built-in `venv` module
 -   Refuses to overwrite existing directories unless explicitly forced
+-   If the environment already exists, it will activate it without overwriting it
 -   Creates a new shell with the virtual environment activated (you can exit this subshell with ``deactivate``, which also will deactivate the virtual environment as the subshell closes)
 
 ## Automatic installation
