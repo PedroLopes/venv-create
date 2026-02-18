@@ -51,6 +51,13 @@ fi
 
 if [ -d $name ] && [ "$FORCE" = false ]; then
     echo "A directory named $name already exists. For safety I will not override it unless you run this program with -f argument (--force)."
+    echo "Instead, we will attempt to activate this directory"
+    if [ -f $name/bin/activate ]; then
+	echo "Your virtual environment called $name will be activated. You can exit it with the deactivate command (which is just an alias to the exit command  and closes this sub-shell)."
+        bash -c "source $PWD/$name/bin/activate; exec bash --init-file <(echo \"alias deactivate='exit'\")"
+    else 
+       echo "$name does not contain a /bin/activate inside it, so will exit"
+    fi
     exit 1;
 fi
 
@@ -81,7 +88,8 @@ if [ ! "$QUIET" ]; then
 fi
 
 bash -c "source $PWD/$name/bin/activate; exec bash --init-file <(echo \"alias deactivate='exit'\")"
-	
+
+
 # Special credit to 
 #   https://serverfault.com/questions/368054/run-an-interactive-bash-subshell-with-initial-commands-without-returning-to-the
 #   for a solution regarding a new shell with a initial command
